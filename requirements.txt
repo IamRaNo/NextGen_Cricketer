@@ -2,3 +2,4 @@ scikit-learn
 dill
 pandas
 streamlit
+gdown

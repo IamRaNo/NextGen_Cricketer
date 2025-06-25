@@ -1,10 +1,22 @@
 import streamlit as st
 import pandas as pd
 import dill
+import gdown
 from sklearn.metrics.pairwise import cosine_similarity
+import os
 
-# --- Load Model ---
-with open("talent_model.pkl", "rb") as f:
+# --- Download model from Google Drive if not already downloaded ---
+model_path = "/tmp/talent_model.pkl"
+file_id = "1FOZLkKQgZ0sVb4wu-MSof9p1Lcz0Zf3t"
+url = f"https://drive.google.com/uc?id={file_id}"
+
+# Only download if not already present
+if not os.path.exists(model_path):
+    gdown.download(url, model_path, quiet=False, use_cookies=False)
+
+# Load the model
+
+with open(model_path, "rb") as f:
     model = dill.load(f)
 
 pipeline = model['pipeline']
@@ -94,7 +106,7 @@ if submit:
 
     # --- Display classification only ---
     st.subheader("🎯 Talent Evaluation")
-    st.success(f"Hey **{player_name}**, you are **{classification}**!")
+    st.success(f"Hey **{player_name}**, your class -> **{classification}**!")
 
     # --- Optional: Show derived metrics ---
     st.markdown("### 📊 Derived Stats (for reference)")
