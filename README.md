@@ -77,21 +77,3 @@ The primary goal is to **identify promising ODI batting talent** based on histor
 
 ---
 
-## 💾 7. How to Run the Project Locally
-
-```bash
-# Clone the repo
-git clone https://github.com/IamRaNo/NextGen_Cricketer.git
-cd NextGen_Cricketer
-
-# (Optional) Create a virtual environment
-python -m venv venv
-source venv/bin/activate  # For Linux/Mac
-venv\Scripts\activate     # For Windows
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run the app
-streamlit run app.py
-
